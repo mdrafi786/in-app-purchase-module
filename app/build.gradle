@@ -29,6 +29,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.bigohtech.inapppurchaaseexample'
 }
 
 dependencies {
@@ -37,10 +38,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-
-    implementation 'com.android.billingclient:billing:5.1.0'
-    implementation 'com.android.billingclient:billing-ktx:5.1.0'
     implementation project(path: ':InApppPurchaseModule')
 
 }

@@ -1,14 +1,29 @@
 package com.bigohtech.snippetmodule.listener
 
 import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.SkuDetails
 
 interface InAppPurchaseUpdateListener {
-    fun onBillingSetupFinished(billingResult: BillingResult)
-    fun onBillingServiceDisconnected()
+    fun onBillingClientReady(billingResult: BillingResult)
+
+    fun onBillingServiceDisconnected() {
+        // this is optional
+    }
+
     fun onPurchasesSuccess(purchaseList: List<Purchase?>)
-    fun onPurchasesError()
-    fun onPurchaseCancelled()
-    fun onBillingInitialized(skuDetailsList: List<SkuDetails>)
+    fun onQueryPurchasesSuccess(purchaseList: List<Purchase?>) {
+        // this is optional
+    }
+
+    fun onQueryProductDetailSuccess(productDetailsMap: Map<String, ProductDetails>) {
+        // this is optional
+    }
+
+    fun onPurchaseCancelled() {
+        // this is optional
+    }
+
+    fun onError(error: String)
+
 }
