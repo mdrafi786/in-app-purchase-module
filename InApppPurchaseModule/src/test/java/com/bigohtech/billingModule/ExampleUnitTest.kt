@@ -1,4 +1,4 @@
-package com.bigohtech.snippetmodule
+package com.bigohtech.billingModule
 
 import org.junit.Test
 

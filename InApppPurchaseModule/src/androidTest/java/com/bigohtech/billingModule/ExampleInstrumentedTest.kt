@@ -1,4 +1,4 @@
-package com.bigohtech.snippetmodule
+package com.bigohtech.billingModule
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

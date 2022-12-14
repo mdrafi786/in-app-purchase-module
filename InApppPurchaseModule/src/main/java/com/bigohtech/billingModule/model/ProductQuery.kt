@@ -1,4 +1,4 @@
-package com.bigohtech.snippetmodule.model
+package com.bigohtech.billingModule.model
 
 data class ProductQuery(
     val productId: String,

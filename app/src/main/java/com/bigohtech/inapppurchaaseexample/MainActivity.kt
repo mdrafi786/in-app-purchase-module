@@ -9,14 +9,17 @@ import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
+import com.bigohtech.billingModule.listener.InAppPurchaseUpdateListener
+import com.bigohtech.billingModule.manager.InAppPurchaseClient
+import com.bigohtech.billingModule.manager.InAppPurchaseClientImpl
+import com.bigohtech.billingModule.model.ProductQuery
 import com.bigohtech.inapppurchaaseexample.constants.Constants
-import com.bigohtech.snippetmodule.manager.BillingClientManager
-import com.bigohtech.snippetmodule.listener.InAppPurchaseUpdateListener
-import com.bigohtech.snippetmodule.model.ProductQuery
 
 class MainActivity : AppCompatActivity(), InAppPurchaseUpdateListener {
 
-    private val billingClient: BillingClientManager by lazy { BillingClientManager(this) }
+    private val billingClient: InAppPurchaseClient by lazy {
+        InAppPurchaseClientImpl(this)
+    }
 
     private var productDetailsMap: Map<String, ProductDetails>? = emptyMap()
 
@@ -47,14 +50,15 @@ class MainActivity : AppCompatActivity(), InAppPurchaseUpdateListener {
                     purchaseType = BillingClient.ProductType.SUBS))
 
         // Query Google Play Billing for existing purchases.
-        billingClient.queryPurchases()
+        billingClient.queryPurchases(BillingClient.ProductType.INAPP)
 
         // Query Google Play Billing for products available to sell and present them in the UI
         billingClient.queryProductDetails(listOfProductQuery)
     }
 
     override fun onPurchasesSuccess(purchaseList: List<Purchase?>) {
-        // handle new purchase success here
+        // handle new purchase success here and also check state of purchase
+
 
     }
 
@@ -75,6 +79,11 @@ class MainActivity : AppCompatActivity(), InAppPurchaseUpdateListener {
     override fun onError(error: String) {
         Log.d("MainActivity::", error)
         Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    }
+
+
+    override fun onAcknowledgementResponse(isAcknowledged: Boolean) {
+        // check purchase acknowledgement
     }
 
     override fun onDestroy() {

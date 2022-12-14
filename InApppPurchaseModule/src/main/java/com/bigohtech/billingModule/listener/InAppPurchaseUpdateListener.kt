@@ -1,4 +1,4 @@
-package com.bigohtech.snippetmodule.listener
+package com.bigohtech.billingModule.listener
 
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ProductDetails
@@ -25,5 +25,7 @@ interface InAppPurchaseUpdateListener {
     }
 
     fun onError(error: String)
+
+    fun onAcknowledgementResponse(isAcknowledged: Boolean = false)
 
 }
