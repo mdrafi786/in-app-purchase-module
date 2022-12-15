@@ -16,7 +16,7 @@ InAppPurchase is a  Android Library to implement Google Billing Library integrat
 2. Add library dependency to the app level **`build.gradle`** file.
    ```gradle
     dependencies {
-	   implementation 'com.github.mdrafi786:location-manager:$latest_stable_version'
+	   implementation 'com.github.mdrafi786:in-app-purchase-module:$latest_stable_version'
 	}
    ```
    
