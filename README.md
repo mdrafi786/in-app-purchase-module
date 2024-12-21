@@ -148,6 +148,3 @@ InAppPurchase is a  Android Library to implement Google Billing Library integrat
         }
         ```
         
-        
-## License
-* [BigOhNotation](https://www.bigohtech.com/)
